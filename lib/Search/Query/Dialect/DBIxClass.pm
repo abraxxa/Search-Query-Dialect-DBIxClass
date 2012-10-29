@@ -35,7 +35,7 @@ my %negated_op = (
     my $query = Search::Query->parser(
             dialect => 'DBIxClass',
             default_field => [qw( name description )],
-        )->parse('foo');
+        )->parse('foo bar -baz');
     my $rs = $schema->resultset('Foo')->search($query->as_dbic_query);
 
 =head1 DESCRIPTION
