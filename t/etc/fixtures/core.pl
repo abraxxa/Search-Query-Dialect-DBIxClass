@@ -26,6 +26,11 @@ $VAR1 = [
         '38',
         'alex@home.org'
       ],
+      [
+        'Rudolf',
+        '72',
+        undef,
+      ],
     ],
   },
 ];

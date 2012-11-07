@@ -104,7 +104,7 @@ sub _dbic_op {
     elsif ( $op eq '!~' ) {
         return _wrap_dbic_ops(
             map {
-                \[  "LOWER($_) NOT LIKE ?",
+                \[  "COALESCE( LOWER($_), '' ) NOT LIKE ?",
                     [ plain_value => "%$clause->{value}%" ]
                     ]
             } @$colnames

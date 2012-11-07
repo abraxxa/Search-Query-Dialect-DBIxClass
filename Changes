@@ -1,4 +1,5 @@
 {{ $NEXT }}
+    - columns with null values are included in 'not like' search results
 
 0.001     2012-10-29 16:21:47 Europe/Vienna
     - initial release
