@@ -1,4 +1,6 @@
 {{ $NEXT }}
+
+0.002     2012-11-07 09:42:43 Europe/Vienna
     - columns with null values are included in 'not like' search results
 
 0.001     2012-10-29 16:21:47 Europe/Vienna
