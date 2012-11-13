@@ -1,4 +1,5 @@
 {{ $NEXT }}
+    - fixed missing Config::General test requirement (CPAN Testers++)
 
 0.002     2012-11-07 09:42:43 Europe/Vienna
     - columns with null values are included in 'not like' search results
