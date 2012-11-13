@@ -1,4 +1,6 @@
 {{ $NEXT }}
+
+0.003     2012-11-13 14:40:51 Europe/Vienna
     - fixed missing Config::General test requirement (CPAN Testers++)
 
 0.002     2012-11-07 09:42:43 Europe/Vienna
