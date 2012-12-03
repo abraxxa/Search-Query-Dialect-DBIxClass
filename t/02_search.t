@@ -47,8 +47,12 @@ ok( my $parser = Search::Query->parser(
 {
     my $rs_query = Person->search_rs( $parser->parse('!n')->as_dbic_query );
     my $rs_expected = Person->search_rs(
-        [   \[ "COALESCE( LOWER(name), '' ) NOT LIKE ?",  [ plain_value => "%n%" ] ],
-            \[ "COALESCE( LOWER(email), '' ) NOT LIKE ?", [ plain_value => "%n%" ] ],
+        [   \[  "COALESCE( LOWER(name), '' ) NOT LIKE ?",
+                [ plain_value => "%n%" ]
+            ],
+            \[  "COALESCE( LOWER(email), '' ) NOT LIKE ?",
+                [ plain_value => "%n%" ]
+            ],
         ]
     );
     eq_resultset( $rs_query, $rs_expected,
@@ -94,9 +98,11 @@ ok( my $parser = Search::Query->parser(
         $parser->parse('email!~alex email!~work')->as_dbic_query );
     my $rs_expected = Person->search_rs(
         {   '-and' => [
-                \[  "COALESCE( LOWER(email), '' ) NOT LIKE ?", [ plain_value => "%alex%" ]
+                \[  "COALESCE( LOWER(email), '' ) NOT LIKE ?",
+                    [ plain_value => "%alex%" ]
                 ],
-                \[  "COALESCE( LOWER(email), '') NOT LIKE ?", [ plain_value => "%work%" ]
+                \[  "COALESCE( LOWER(email), '') NOT LIKE ?",
+                    [ plain_value => "%work%" ]
                 ],
             ]
         }
