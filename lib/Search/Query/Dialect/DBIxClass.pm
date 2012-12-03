@@ -58,7 +58,8 @@ sub init {
 
     $self->SUPER::init(@_);
 
-    $self->parser->{op_regex} = qr/${$self->parser->{op_regex}}|!#/;
+    my $op_regex = $self->parser->{op_regex};
+    $self->parser->{op_regex} = qr/$op_regex|!#/;
 
     return $self;
 }

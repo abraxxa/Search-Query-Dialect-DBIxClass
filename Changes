@@ -1,4 +1,5 @@
 {{ $NEXT }}
+    - fixed failing on Perl < 5.12
 
 0.003     2012-11-13 14:40:51 Europe/Vienna
     - fixed missing Config::General test requirement (CPAN Testers++)
