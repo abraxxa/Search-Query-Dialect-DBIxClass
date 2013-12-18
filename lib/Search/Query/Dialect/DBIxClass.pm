@@ -40,9 +40,9 @@ my %negated_op = (
 
 =head1 DESCRIPTION
 
-    Search::Query::Dialect::DBIxClass extends L<Search::Query::Dialect::Native>
-    by an as_dbic_query method that returns a hashref that can be passed to
-    L<DBIx::Class::ResultSet/search>.
+Search::Query::Dialect::DBIxClass extends L<Search::Query::Dialect::Native>
+by an as_dbic_query method that returns a hashref that can be passed to
+L<DBIx::Class::ResultSet/search>.
 
 =head1 METHODS
 
