@@ -1,9 +1,8 @@
 package Search::Query::Dialect::DBIxClass;
 
 # ABSTRACT: Search::Query dialect for simple DBIx::Class query generation
-use strict;
-use warnings;
-use base qw( Search::Query::Dialect::Native );
+use Moo;
+extends 'Search::Query::Dialect::Native';
 
 my %negated_prefix = (
     '+' => '-',
@@ -46,17 +45,15 @@ L<DBIx::Class::ResultSet/search>.
 
 =head1 METHODS
 
-=head2 init
+=head2 BUILD
  
 Overrides base method and sets DBIx::Class-appropriate defaults.
 It adds '!#' to the op_regex which is the 'not in list of values' operator.
 
 =cut
 
-sub init {
+sub BUILD {
     my $self = shift;
-
-    $self->SUPER::init(@_);
 
     my $op_regex = $self->parser->{op_regex};
     $self->parser->{op_regex} = qr/$op_regex|!#/;
