@@ -93,8 +93,8 @@ sub _dbic_op {
     elsif ( $op eq ':' || $op eq '~' ) {
         return _wrap_dbic_ops(
             map {
-                \[  "LOWER($_) LIKE ?",
-                    [ plain_value => "%$clause->{value}%" ]
+                \[  "LOWER($_) LIKE LOWER(?)",
+                    "%$clause->{value}%"
                     ]
             } @$colnames
         );
@@ -102,8 +102,8 @@ sub _dbic_op {
     elsif ( $op eq '!~' ) {
         return _wrap_dbic_ops(
             map {
-                \[  "COALESCE( LOWER($_), '' ) NOT LIKE ?",
-                    [ plain_value => "%$clause->{value}%" ]
+                \[  "COALESCE( LOWER($_), '' ) NOT LIKE LOWER(?)",
+                    "%$clause->{value}%"
                     ]
             } @$colnames
         );
