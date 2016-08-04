@@ -161,7 +161,8 @@ sub as_dbic_query {
         : @{ $self->parser->{default_field} };
 
     my @q;
-    foreach my $prefix ( '+', '-' ) {
+    my $mandatory = 0;
+    foreach my $prefix ( '+', '', '-' ) {
         next unless exists $tree->{$prefix};
 
         for my $clause ( @{ $tree->{$prefix} } ) {
@@ -179,10 +180,11 @@ sub as_dbic_query {
                 $self->_dbic_op( $clause, $clause_prefix, \@colnames );
 
             push @q, $dbic_op;
+            $mandatory = 1 if $prefix eq '+' or $prefix eq '-';
         }
     }
 
-    my %search_params = ( -and => \@q );
+    my %search_params = ( ($mandatory ? '-and' : '-or') => \@q );
 
     return \%search_params;
 }
